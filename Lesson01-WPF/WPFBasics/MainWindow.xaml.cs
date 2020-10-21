@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WPFBasics
@@ -23,6 +26,34 @@ namespace WPFBasics
             // clearing all the checkboxes on pressing the reset button
             //this.WeldCheckbox.IsChecked = this.AssemblyCheckbox.IsChecked = this.PlasmaCheckbox.IsChecked = this.LaserCheckbox.IsChecked = this.PurchaseCheckbox.IsChecked = this.LatheCheckbox.IsChecked = this.DrillCheckbox.IsChecked =
             //    this.FoldCheckbox.IsChecked = this.RollCheckbox.IsChecked = this.SawCheckbox.IsChecked = false;
+        }
+        private void Select_LdifFile_1_Click(object sender, RoutedEventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            dialog.Filters.Add(new CommonFileDialogFilter("Text files", "*.txt"));
+            dialog.Filters.Add(new CommonFileDialogFilter("All files", "*.*"));
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                LdifFile_1.Text = dialog.FileName;
+        }
+        private void Select_LdifFile_2_Click(object sender, RoutedEventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            dialog.Filters.Add(new CommonFileDialogFilter("Text files", "*.txt"));
+            dialog.Filters.Add(new CommonFileDialogFilter("All files", "*.*"));
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                LdifFile_2.Text = dialog.FileName;
+        }
+        private void Select_OutPutFolder_Click(object sender, RoutedEventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                OutPutFolder.Text = dialog.FileName;
         }
 
         private void Checkbox_Checked(object sender, RoutedEventArgs e)

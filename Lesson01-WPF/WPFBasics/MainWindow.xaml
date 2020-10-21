@@ -19,14 +19,16 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="COMPARE LDIF" />
+                            <Image Height="14" Width="14" Source="/Resources/create.png" />
+                            <TextBlock Text="Create ldif" Margin="2,0,0,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="CREATE LDIF" />
+                            <Image Height="14" Width="14" Source="/Resources/compare.png" />
+                            <TextBlock Text="Compare ldif" Margin="2,0,0,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
                     <StackPanel>
@@ -36,22 +38,54 @@
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Margin="0 0 10 0" Grid.Column="0">
-                                <TextBlock Margin="0 10" Text="Pulse Properties" FontWeight="Bold" />
+                                <TextBlock Margin="0 10 0 0" Text="File Path :" FontWeight="Bold" />
 
-                                <TextBlock Text="Description" />
-                                <TextBox x:Name="DescriptionText" Padding="2" />
+                                <TextBlock Text="Ldif 1 :" />
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Manufactering info" FontWeight="Bold" Margin="0 10" />
+                                    <TextBox x:Name="LdifFile_1" Grid.Column="0" IsReadOnly="True" Margin="0 0 2 0" Padding="2" />
+                                    <Button Width="24" Click="Select_LdifFile_1_Click"  Grid.Column="2" BorderThickness="1">
+                                        <Image Source="/Resources/folder.png"/>
+                                    </Button>
+                                </Grid>
 
-                                <CheckBox Checked="Checkbox_Checked" x:Name="WeldCheckbox" Content="Weld" />
+                                <TextBlock Margin="0 5 0 0" Text="Ldif 2 :" />
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Finish" Margin="0 10" Padding=" 0 5 0 0" />
-                                <ComboBox SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0" Padding="2">
-                                    <ComboBoxItem Content="Painted" />
-                                    <ComboBoxItem Content="Not Painted" />
-                                </ComboBox>
+                                    <TextBox x:Name="LdifFile_2" Grid.Column="0" Margin="0 0 2 0" Padding="2" />
+                                    <Button Width="24" Click="Select_LdifFile_2_Click"  Grid.Column="2" BorderThickness="1">
+                                        <Image Source="/Resources/folder.png"/>
+                                    </Button>
+                                </Grid>
 
-                                <Grid Margin="0 20">
+
+                                <TextBlock Margin="0 15 0 5" Text="OutPut Folder :" FontWeight="Bold" />
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox x:Name="OutPutFolder" MaxLength="25" Grid.Column="0" Margin="0 0 2 0" Padding="2" />
+                                    <Button Width="24" Click="Select_OutPutFolder_Click"  Grid.Column="2" BorderThickness="1">
+                                        <Image Source="/Resources/folder.png"/>
+                                    </Button>
+                                </Grid>
+
+
+                                <TextBlock Text="Should Match ?" FontWeight="Bold" Margin="0 15 0 5" />
+                                <CheckBox Checked="Checkbox_Checked" x:Name="WeldCheckbox" Content="Yes" />
+
+
+                                <Grid Margin="0 25">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
@@ -63,11 +97,10 @@
                                 </Grid>
                             </StackPanel>
 
-                            <StackPanel Grid.Column="1"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <TextBlock Margin="0 10" Text="Output:" FontWeight="Bold" />
 
-                                <TextBox Margin="0 15" MinHeight="500" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                    
+                                <TextBox x:Name="OutPutText" Margin="0 15" MinHeight="500" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                    
                                          Visibility="Visible" VerticalScrollBarVisibility="Auto"   Padding="2"  IsReadOnly="True"                     
                                          Background="#eee" TextWrapping="Wrap" />
                                 <Grid>
